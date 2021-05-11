@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,20 +50,31 @@ namespace domashka4
         {
             get {
                 int count = 0;
-                for (int i = 0; i < 19; i = i+2)
+                for (int i = 0; i < 19; i = i + 2)
                 {
                     if (i >= 20) break;
                     if (a[i] % 3 == 0 || a[i + 1] % 3 == 0)
                     { count++;
-                        
+
                         Console.WriteLine("                             ||  Эта пара удовлетворяет условие");
-                            }// 
-                    Console.WriteLine($"Пара № {(i/2)+1}) {a[i]} {a[i + 1]}");
+                    }// 
+                    Console.WriteLine($"Пара № {(i / 2) + 1}) {a[i]} {a[i + 1]}");
                     Console.WriteLine($"___________________________________________________________________________");
                 }
                 Console.WriteLine("Количество пар: " + count);
-                return 0;
+                return count;
             }
+        }
+
+        public int Mysolution() // решил перемножить каждое число в индексе на самого сея 
+        {
+           
+                        for (int i = 0; i< 20; i++)
+            { if (a[i] < 0 ) a[i] = a[i] * a[i] * -1; // сделал рандом еще большим рандомом,
+                else a[i] = Convert.ToInt32( Math.Sqrt(a[i] * a[i])); // добавил условие что отрицательные числа перемножатся сами на себя, а положительные оже самое и потом корень из них 
+                Console.WriteLine(a[i]); 
+        }
+            return 0;
         }
 
 
@@ -77,7 +88,7 @@ namespace domashka4
         //        //Console.WriteLine($"Пара № {pare_num}) {a[i]} {a[i + 1]}"); // пробовал эту запись, оно не работает // бесконечность не предел
         //        Console.WriteLine("Пара чисел: {0} и {1}", a[i], a[i + 1]);
         //    }
-           
+
 
         //}
 
@@ -200,13 +211,24 @@ namespace domashka4
         /// </summary>
         static void dz1()
         {
-
+            Console.Title = "1.Дан  целочисленный массив  из 20 элементов." ;
+            Console.Clear();
             int[] array03 = { 7, 9, 10, 1, 3, 5 }; // просто так создал масив
+            int el_2 = array03[1]; // созда переменную и дал ей значение масива под индексом 1 получим 9
+
+
             bool flag_m;
             Mymassiv masiv_a = new Mymassiv(20, -10_000, 10_000); // инициализируем масив в переменную masiv_a описанную в классе Mymassiv           
             Console.WriteLine(masiv_a.ToString());
-            Console.WriteLine($"Сверху ты видишь 20 чисел в диапазоне от -10000 до 10000, числа рандомные и описанны в классе Mymassiv Random rnd = new Random();");
+            Console.WriteLine($"Сверху ты видишь 20 чисел в диапазоне от -10000 до 10000, числа рандомные и описанны в классе Mymassiv Random rnd = new Random(); Нажми пробел чтобы продолжить");
             Console.WriteLine();
+            Console.WriteLine($"Ниже ты видишь мутированные значения масива который мы создали рандомным");
+            masiv_a.Mysolution();
+            //Console.WriteLine(masiv_a.Mysolution);
+            Console.WriteLine();
+            Console.WriteLine($"Нажми клавишу, чтобы узнать какие пары мутантов делятся на 3");
+            Console.WriteLine();
+            Console.ReadKey();
             Console.WriteLine(masiv_a.Max);
             Console.WriteLine($"Максимальное число ");
             Console.WriteLine();
